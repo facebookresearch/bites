@@ -53,6 +53,7 @@ class GaussianModel(BayesianModel):
             shrinkage_g: (optional) the 'g' hyperparameter that controls the amount of shrinkage
             induced by the prior. By default set to 1.0 (i.e. no influence on the specified prior_params).
         """
+        # pyrefly: ignore [missing-attribute]
         super().__init__()
 
         self._data_mean = data_mean
@@ -78,6 +79,7 @@ class GaussianModel(BayesianModel):
             data variance: the sampling variance.
         """
         model = cls.__new__(cls)
+        # pyrefly: ignore [missing-attribute]
         super(GaussianModel, model).__init__()
         model._posterior_params = posterior_params
         model._data_variance = data_variance
@@ -171,6 +173,7 @@ class GaussianModel(BayesianModel):
             A tuple containing the upper and lower credible interval bounds.
         """
         post_params = self.calc_posterior()
+        # pyrefly: ignore [missing-attribute]
         post_pdf = scipy.stats.norm(
             loc=post_params.mean, scale=np.sqrt(post_params.variance)
         )
@@ -222,6 +225,7 @@ class GaussianModel(BayesianModel):
             A tuple containing the upper and lower predictive interval bounds.
         """
         post_pred_params = self.calc_posterior_predictive(n_additional_obs)
+        # pyrefly: ignore [missing-attribute]
         post_pred_pdf = scipy.stats.norm(
             loc=post_pred_params.mean, scale=np.sqrt(post_pred_params.variance)
         )
@@ -275,6 +279,7 @@ class GaussianModel(BayesianModel):
             prior_params=posterior_params,
             data_variance=self.data_variance,
         )
+        # pyrefly: ignore [missing-attribute]
         return scipy.stats.norm.sf(
             (required_obs_mean - posterior_predictive_params.mean)
             / np.sqrt(posterior_predictive_params.variance)
@@ -299,6 +304,7 @@ class GaussianModel(BayesianModel):
         """
 
         posterior_params = self.calc_posterior()
+        # pyrefly: ignore [missing-attribute]
         return scipy.stats.norm.sf(
             x=threshold,
             loc=posterior_params.mean,
@@ -351,6 +357,7 @@ class GaussianModel(BayesianModel):
             prior_params=posterior_params,
             data_variance=self.data_variance,
         )
+        # pyrefly: ignore [missing-attribute]
         return scipy.stats.norm.cdf(
             (required_obs_mean - posterior_predictive_params.mean)
             / np.sqrt(posterior_predictive_params.variance)

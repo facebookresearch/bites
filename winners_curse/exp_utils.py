@@ -26,6 +26,7 @@ def _calc_required_mean_for_prob_success(
     Returns:
         The required mean for success.
     """
+    # pyrefly: ignore [missing-attribute]
     return threshold - np.sqrt(variance) * sp.stats.norm.ppf(1 - prob)
 
 
@@ -42,6 +43,7 @@ def _calc_required_mean_for_prob_failure(
     Returns:
         The required mean for failure.
     """
+    # pyrefly: ignore [missing-attribute]
     return threshold - np.sqrt(variance) * sp.stats.norm.ppf(prob)
 
 
@@ -168,6 +170,7 @@ def pred_power_replication(
         variance=posterior_params.variance + data_variance / n_obs,
     )
     # Calculate the probability of success
+    # pyrefly: ignore [missing-attribute]
     return sp.stats.norm.sf(
         (required_post_mean - posterior_predictive_params.mean)
         / np.sqrt(posterior_predictive_params.variance)
@@ -187,6 +190,7 @@ def daily_variance(
     Returns:
         The variance of the daily lift estimate in the experiment
     """
+    # pyrefly: ignore [missing-attribute]
     return ((ci_high - mean) / sp.stats.norm.ppf(prob, 0.0, 1.0) * n_obs**0.5) ** 2
 
 
