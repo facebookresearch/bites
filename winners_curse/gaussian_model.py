@@ -94,7 +94,7 @@ class GaussianModel(BayesianModel):
         return self._data_variance
 
     @property
-    def n_obs(self):
+    def n_obs(self) -> int:
         return self._n_obs
 
     @property
@@ -125,7 +125,7 @@ class GaussianModel(BayesianModel):
         self._posterior_params = None
 
     @prior_params.setter
-    def prior_params(self, value):
+    def prior_params(self, value: GaussianDistParams) -> None:
         self._prior_params = value
         self._prior_params = self._calc_g_prior(self._shrinkage_g)
         self._posterior_params = None
