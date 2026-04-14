@@ -110,7 +110,7 @@ class GaussianModel(BayesianModel):
         return self._posterior_params
 
     @data_mean.setter
-    def data_mean(self, value):
+    def data_mean(self, value: float) -> None:
         self._data_mean = value
         self._posterior_params = None
 
@@ -131,7 +131,7 @@ class GaussianModel(BayesianModel):
         self._posterior_params = None
 
     @shrinkage_g.setter
-    def shrinkage_g(self, value):
+    def shrinkage_g(self, value: float) -> None:
         self._shrinkage_g = value
         self._prior_params = self._calc_g_prior(self._shrinkage_g)
         self._posterior_params = None
