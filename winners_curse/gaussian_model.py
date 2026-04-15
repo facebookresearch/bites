@@ -102,7 +102,7 @@ class GaussianModel(BayesianModel):
         return self._prior_params
 
     @property
-    def shrinkage_g(self):
+    def shrinkage_g(self) -> float:
         return self._shrinkage_g
 
     @property
@@ -115,7 +115,7 @@ class GaussianModel(BayesianModel):
         self._posterior_params = None
 
     @data_variance.setter
-    def data_variance(self, value):
+    def data_variance(self, value: float) -> None:
         self._data_variance = value
         self._posterior_params = None
 
