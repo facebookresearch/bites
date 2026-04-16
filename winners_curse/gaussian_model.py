@@ -106,7 +106,7 @@ class GaussianModel(BayesianModel):
         return self._shrinkage_g
 
     @property
-    def posterior_params(self):
+    def posterior_params(self) -> GaussianDistParams | None:
         return self._posterior_params
 
     @data_mean.setter
@@ -158,6 +158,7 @@ class GaussianModel(BayesianModel):
                 mean=post_mean, variance=post_var
             )
 
+        assert self.posterior_params is not None
         return self.posterior_params
 
     def calc_posterior_central_credible_intervals(
