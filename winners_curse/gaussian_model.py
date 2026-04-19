@@ -86,11 +86,11 @@ class GaussianModel(BayesianModel):
         return model
 
     @property
-    def data_mean(self):
+    def data_mean(self) -> float:
         return self._data_mean
 
     @property
-    def data_variance(self):
+    def data_variance(self) -> float:
         return self._data_variance
 
     @property
