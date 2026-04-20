@@ -98,7 +98,7 @@ class GaussianModel(BayesianModel):
         return self._n_obs
 
     @property
-    def prior_params(self):
+    def prior_params(self) -> GaussianDistParams:
         return self._prior_params
 
     @property
