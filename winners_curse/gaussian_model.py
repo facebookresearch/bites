@@ -3,6 +3,8 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
+# pyre-strict
+
 """Gaussian-Gaussian conjugate Bayesian model for BITES."""
 
 from __future__ import annotations
@@ -120,7 +122,7 @@ class GaussianModel(BayesianModel):
         self._posterior_params = None
 
     @n_obs.setter
-    def n_obs(self, value):
+    def n_obs(self, value: int) -> None:
         self._n_obs = value
         self._posterior_params = None
 
@@ -137,7 +139,7 @@ class GaussianModel(BayesianModel):
         self._posterior_params = None
 
     @posterior_params.setter
-    def posterior_params(self, value):
+    def posterior_params(self, value: GaussianDistParams | None) -> None:
         self._posterior_params = value
 
     def calc_posterior(self) -> GaussianDistParams:
