@@ -176,7 +176,6 @@ class GaussianModel(BayesianModel):
             A tuple containing the upper and lower credible interval bounds.
         """
         post_params = self.calc_posterior()
-        # pyrefly: ignore [missing-attribute]
         post_pdf = scipy.stats.norm(
             loc=post_params.mean, scale=np.sqrt(post_params.variance)
         )
@@ -228,7 +227,6 @@ class GaussianModel(BayesianModel):
             A tuple containing the upper and lower predictive interval bounds.
         """
         post_pred_params = self.calc_posterior_predictive(n_additional_obs)
-        # pyrefly: ignore [missing-attribute]
         post_pred_pdf = scipy.stats.norm(
             loc=post_pred_params.mean, scale=np.sqrt(post_pred_params.variance)
         )
@@ -282,7 +280,6 @@ class GaussianModel(BayesianModel):
             prior_params=posterior_params,
             data_variance=self.data_variance,
         )
-        # pyrefly: ignore [missing-attribute]
         return scipy.stats.norm.sf(
             (required_obs_mean - posterior_predictive_params.mean)
             / np.sqrt(posterior_predictive_params.variance)
@@ -307,7 +304,6 @@ class GaussianModel(BayesianModel):
         """
 
         posterior_params = self.calc_posterior()
-        # pyrefly: ignore [missing-attribute]
         return scipy.stats.norm.sf(
             x=threshold,
             loc=posterior_params.mean,
@@ -360,7 +356,6 @@ class GaussianModel(BayesianModel):
             prior_params=posterior_params,
             data_variance=self.data_variance,
         )
-        # pyrefly: ignore [missing-attribute]
         return scipy.stats.norm.cdf(
             (required_obs_mean - posterior_predictive_params.mean)
             / np.sqrt(posterior_predictive_params.variance)
